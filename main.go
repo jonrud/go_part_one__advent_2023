@@ -6,5 +6,6 @@ import (
 )
 
 func main() {
-	fmt.Println("Day one result: ", day_one.Run())
+	fmt.Println("Day one part one result: ", day_one.RunPartOne())
+	fmt.Println("Day one part two result: ", day_one.RunPartTwo())
 }
