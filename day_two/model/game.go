@@ -1,4 +1,4 @@
-package part_one
+package model
 
 import (
 	"log"
@@ -18,7 +18,17 @@ func NewGame() *Game {
 	}
 }
 
-func (g *Game) IsGameWithinLimits(limits map[Color]int) bool {
+func (g *Game) CalculateMaxCounts() map[BallColor]int {
+	maxCounts := map[BallColor]int{}
+
+	for _, color := range ColorsToCheck {
+		maxCounts[color] = g.GetMaxColorCount(color)
+	}
+
+	return maxCounts
+}
+
+func (g *Game) IsGameWithinLimits(limits map[BallColor]int) bool {
 	for _, color := range ColorsToCheck {
 		if limits[color] < g.GetMaxColorCount(color) {
 			return false
@@ -28,7 +38,7 @@ func (g *Game) IsGameWithinLimits(limits map[Color]int) bool {
 	return true
 }
 
-func (g *Game) GetMaxColorCount(color Color) int {
+func (g *Game) GetMaxColorCount(color BallColor) int {
 	// Not very efficient, but cba bulking it
 
 	maxColorCount := 0

@@ -1,4 +1,4 @@
-package part_one
+package model
 
 import (
 	"log"
@@ -6,30 +6,17 @@ import (
 	"strconv"
 )
 
-type Color string
-
-const (
-	RED   = "RED"
-	GREEN = "GREEN"
-	BLUE  = "BLUE"
-)
-
-var ColorsToCheck = []Color{RED, GREEN, BLUE}
-
-// Not using constants in regexp on purpose
-var colorParseMatchers = map[Color]string{
-	RED:   "([0-9]*) red",
-	GREEN: "([0-9]*) green",
-	BLUE:  "([0-9]*) blue",
-}
-
 type Round struct {
-	BallCount map[Color]int
+	BallCount map[BallColor]int
 }
 
 func NewRound() *Round {
 	return &Round{
-		BallCount: map[Color]int{},
+		BallCount: map[BallColor]int{
+			RED:   0,
+			GREEN: 0,
+			BLUE:  0,
+		},
 	}
 }
 
