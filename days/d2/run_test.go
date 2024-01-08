@@ -1,7 +1,7 @@
-package day_two
+package d2
 
 import (
-	"advent_2023/day_two/model"
+	"advent_2023/days/d2/model"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )

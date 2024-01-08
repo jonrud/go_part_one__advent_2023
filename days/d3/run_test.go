@@ -1,4 +1,4 @@
-package day_three
+package d3
 
 import (
 	"github.com/stretchr/testify/assert"

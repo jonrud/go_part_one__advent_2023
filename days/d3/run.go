@@ -1,13 +1,13 @@
-package day_three
+package d3
 
 import (
-	model2 "advent_2023/day_three/model"
+	"advent_2023/days/d3/model"
 	"advent_2023/utils"
 	"strings"
 )
 
 func RunPartOne() int {
-	input := utils.ReadFile("day_three/input.txt")
+	input := utils.ReadFile("days/d3/input.txt")
 	input = strings.ReplaceAll(input, "\r\n", "\n")
 	inputRows := strings.Split(input, "\n")
 
@@ -18,7 +18,7 @@ func executePartOne(inputRows []string) int {
 	rowCount := len(inputRows)
 	columnCount := len(inputRows[0])
 
-	referenceMap := model2.NewReferenceMap(rowCount, columnCount)
+	referenceMap := model.NewReferenceMap(rowCount, columnCount)
 	parts := populateParts(inputRows, rowCount, columnCount, &referenceMap)
 	populateSymbols(inputRows, rowCount, columnCount, &referenceMap)
 
@@ -28,7 +28,7 @@ func executePartOne(inputRows []string) int {
 }
 
 func RunPartTwo() int {
-	input := utils.ReadFile("day_three/input.txt")
+	input := utils.ReadFile("days/d3/input.txt")
 	input = strings.ReplaceAll(input, "\r\n", "\n")
 	inputRows := strings.Split(input, "\n")
 
@@ -39,7 +39,7 @@ func executePartTwo(inputRows []string) int {
 	rowCount := len(inputRows)
 	columnCount := len(inputRows[0])
 
-	referenceMap := model2.NewReferenceMap(rowCount, columnCount)
+	referenceMap := model.NewReferenceMap(rowCount, columnCount)
 	populateParts(inputRows, rowCount, columnCount, &referenceMap)
 	populateGears(inputRows, rowCount, columnCount, &referenceMap)
 
@@ -48,12 +48,12 @@ func executePartTwo(inputRows []string) int {
 	return sum
 }
 
-func populateParts(inputRows []string, rowCount int, columnCount int, referenceMap *model2.ReferenceMap) []*model2.Part {
-	var parts []*model2.Part
+func populateParts(inputRows []string, rowCount int, columnCount int, referenceMap *model.ReferenceMap) []*model.Part {
+	var parts []*model.Part
 	for rowIndex := 0; rowIndex < rowCount; rowIndex++ {
 		row := strings.Split(inputRows[rowIndex], "")
 
-		var part *model2.Part = nil
+		var part *model.Part = nil
 		for columnIndex := 0; columnIndex < columnCount; columnIndex++ {
 			if !utils.IsNumber(row[columnIndex]) {
 				// If not a number = always skip
@@ -61,7 +61,7 @@ func populateParts(inputRows []string, rowCount int, columnCount int, referenceM
 			}
 
 			if part == nil {
-				part = model2.NewPart()
+				part = model.NewPart()
 			}
 			part.Value += row[columnIndex]
 			referenceMap.Parts[rowIndex][columnIndex] = part
@@ -80,7 +80,7 @@ func populateParts(inputRows []string, rowCount int, columnCount int, referenceM
 	return parts
 }
 
-func populateSymbols(inputRows []string, rowCount int, columnCount int, referenceMap *model2.ReferenceMap) {
+func populateSymbols(inputRows []string, rowCount int, columnCount int, referenceMap *model.ReferenceMap) {
 	for rowIndex := 0; rowIndex < rowCount; rowIndex++ {
 		row := strings.Split(inputRows[rowIndex], "")
 		for columnIndex := 0; columnIndex < columnCount; columnIndex++ {
@@ -95,7 +95,7 @@ func populateSymbols(inputRows []string, rowCount int, columnCount int, referenc
 	}
 }
 
-func sumEngineParts(parts []*model2.Part) int {
+func sumEngineParts(parts []*model.Part) int {
 	sum := 0
 	for _, part := range parts {
 		if part.IsEnginePart {
@@ -105,7 +105,7 @@ func sumEngineParts(parts []*model2.Part) int {
 	return sum
 }
 
-func populateGears(inputRows []string, rowCount int, columnCount int, referenceMap *model2.ReferenceMap) {
+func populateGears(inputRows []string, rowCount int, columnCount int, referenceMap *model.ReferenceMap) {
 	for rowIndex := 0; rowIndex < rowCount; rowIndex++ {
 		row := strings.Split(inputRows[rowIndex], "")
 		for columnIndex := 0; columnIndex < columnCount; columnIndex++ {
@@ -119,7 +119,7 @@ func populateGears(inputRows []string, rowCount int, columnCount int, referenceM
 	}
 }
 
-func sumGearMultiplier(referenceMap model2.ReferenceMap) int {
+func sumGearMultiplier(referenceMap model.ReferenceMap) int {
 	sum := 0
 	for _, gearMultiplier := range referenceMap.GearMultipliers {
 		sum += gearMultiplier

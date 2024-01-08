@@ -1,4 +1,4 @@
-package day_one
+package d1
 
 import (
 	"advent_2023/utils"
@@ -9,7 +9,7 @@ import (
 )
 
 func RunPartOne() int {
-	input := utils.ReadFile("day_one/input.txt")
+	input := utils.ReadFile("days/d1/input.txt")
 	inputRows := strings.Split(input, "\n")
 
 	rxp := regexp.MustCompile("[1-9]")
@@ -34,7 +34,7 @@ func RunPartOne() int {
 }
 
 func RunPartTwo() int {
-	input := utils.ReadFile("day_one/input.txt")
+	input := utils.ReadFile("days/d1/input.txt")
 	fixOverlap(&input)
 
 	inputRows := strings.Split(input, "\n")
