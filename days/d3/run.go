@@ -8,7 +8,6 @@ import (
 
 func RunPartOne() int {
 	input := utils.ReadFile("days/d3/input.txt")
-	input = strings.ReplaceAll(input, "\r\n", "\n")
 	inputRows := strings.Split(input, "\n")
 
 	return executePartOne(inputRows)
@@ -29,7 +28,6 @@ func executePartOne(inputRows []string) int {
 
 func RunPartTwo() int {
 	input := utils.ReadFile("days/d3/input.txt")
-	input = strings.ReplaceAll(input, "\r\n", "\n")
 	inputRows := strings.Split(input, "\n")
 
 	return executePartTwo(inputRows)

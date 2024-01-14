@@ -20,5 +20,9 @@ func ReadFile(path string) string {
 		log.Fatalf("failed reading the file: %v\n", err)
 	}
 
-	return string(content)
+	return convertToUnixLineEndings(string(content))
+}
+
+func convertToUnixLineEndings(stringToConvert string) string {
+	return strings.ReplaceAll(stringToConvert, "\r\n", "\n")
 }
